@@ -25,6 +25,10 @@ AUTOMAKE_OPTIONS = -Wno-unsupported
 
 SICSTUS_CFLI_FILES = sicstus_cfli.h sicstus_cfli.ic sicstus_cfli.cc
 
+SICSTUSPATH = $(shell dirname $(sicstus_prolog))
+
+SPLFR = $(SICSTUSPATH)/splfr
+
 EXTRA_DIST = \
 ppl_interface_generator_sicstus_sd_cc.m4 \
 $(SICSTUS_CFLI_FILES) \
@@ -65,7 +69,7 @@ pkgdata_DATA = ppl_sicstus.pl ppl_sicstus.s.o
 
 ppl_sicstus.so: ppl_sicstus.pl $(top_builddir)/src/libppl.la libppl_sicstus.la
 	$(LIBTOOL) --mode=link --tag=CXX \
-		splfr --cflag="$(AM_CPPFLAGS)" -o $@ \
+		$(SPLFR) --cflag="$(AM_CPPFLAGS)" -o $@ \
 			$(srcdir)/ppl_sicstus.pl \
 			libppl_sicstus.la \
 			@extra_libraries@
@@ -200,7 +204,7 @@ ppl_sicstus$(EXEEXT): ppl_sicstus.s.o $(top_builddir)/src/libppl.la
 if ENABLE_STATIC
 
 ppl_sicstus.s.o: ppl_sicstus.pl libppl_sicstus.la
-	splfr --static --cflag="$(AM_CPPFLAGS)" -o $@ \
+	$(SPLFR) --static --cflag="$(AM_CPPFLAGS)" -o $@ \
 		$(srcdir)/ppl_sicstus.pl \
 		ppl_sicstus_sd.o \
 		sicstus_efli.o \
@@ -210,7 +214,7 @@ ppl_sicstus.s.o: ppl_sicstus.pl libppl_sicstus.la
 else !ENABLE_STATIC
 
 ppl_sicstus.s.o: ppl_sicstus.pl libppl_sicstus.la
-	splfr --cflag="$(AM_CPPFLAGS)" -o $@ \
+	$(SPLFR) --cflag="$(AM_CPPFLAGS)" -o $@ \
 		$(srcdir)/ppl_sicstus.pl \
 		.libs/ppl_sicstus_sd.o \
 		.libs/sicstus_efli.o \
