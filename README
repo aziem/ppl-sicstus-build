@@ -1,3 +1,26 @@
+Kentish Notes:
+
+This is a patched version of PPL to support SICStus Prolog bindings.
+The changes have only been test on Linux, but in theory should work for OSX.
+
+To build:
+
+autoreconf
+
+./configure --disable-documentation --enable-interfaces=sicstus_prolog
+
+make
+
+sudo make install
+
+
+
+-----------------------------------------------------------
+
+
+
+
+
 Copyright (C) 2001-2010 Roberto Bagnara <bagnara@cs.unipr.it>
 Copyright (C) 2010-2017 BUGSENG srl (http://bugseng.com)
 See below for the copying conditions.
