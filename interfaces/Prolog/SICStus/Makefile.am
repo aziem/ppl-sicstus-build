@@ -192,10 +192,10 @@ $(NO_UNDEFINED_FLAG) \
 ppl_sicstus$(EXEEXT): ppl_sicstus.s.o $(top_builddir)/src/libppl.la
 	$(LIBTOOL) --mode=link --tag=CXX \
 		spld --main=prolog \
-			--cflag=`echo '$(AM_CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)' | tr " " ","` \
+			--cflag=`echo '$(AM_CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)' | tr " " "," | xargs -Ix echo x -lppl` \
 			--resources=ppl_sicstus.s.o -o $@ \
 			$(top_builddir)/src/libppl.la \
-			@extra_libraries@
+			@extra_libraries@ -lstdc++
 
 if ENABLE_STATIC
 

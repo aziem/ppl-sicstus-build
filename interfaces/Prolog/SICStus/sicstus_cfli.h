@@ -75,6 +75,12 @@ PCFLI_DECLSPEC int
 Prolog_put_atom(Prolog_term_ref t, Prolog_atom a);
 
 PCFLI_DECLSPEC int
+Prolog_put_nil(Prolog_term_ref t);
+
+PCFLI_DECLSPEC int
+Prolog_get_nil(Prolog_term_ref t);
+
+PCFLI_DECLSPEC int
 Prolog_put_address(Prolog_term_ref t, void* p);
 
 Prolog_atom
