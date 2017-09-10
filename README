@@ -1,20 +1,24 @@
-Kentish Notes:
+This is a patched version of PPL to correctly build the SICStus Prolog bindings. 
 
-This is a patched version of PPL to support SICStus Prolog bindings.
+The latest release version of PPL (1.2) and the latest git version
+seems to be missing some functions to correctly build the SICStus
+bindings, namely Prolog_get_nil and Prolog_put_nil.
+
 The changes have only been test on Linux, but in theory should work for OSX.
+I will eventually clean this up and contribute a patch back upstream. 
 
 To build:
 
 autoreconf
 
-./configure --disable-documentation --enable-interfaces=sicstus_prolog
+./configure --enable-interfaces=sicstus_prolog
 
 make
 
 sudo make install
 
 
-
+Original README follows:
 -----------------------------------------------------------
 
 
